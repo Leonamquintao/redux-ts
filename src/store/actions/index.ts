@@ -18,3 +18,4 @@ export type Action =
   | SearchRepositoriesAction
   | SearchRepositoriesSuccessAction
   | SearchRepositoriesErrorAction;
+  
