@@ -1,3 +1,6 @@
 export * from './store';
-// export * as actionCreators from './action-creators';
-export { searchRepositories as actionCreators } from './action-creators';
+import { searchRepositories } from './action-creators';
+
+export const actionCreators = {
+  searchRepositories,
+};

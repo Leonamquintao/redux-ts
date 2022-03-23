@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actionCreators } from '../store';
 
 const RepositoriesList: React.FC = () => {
 
-  const [repo, setRepo] = useState<string>('');
+  const [repoName, setRepoName] = useState<string>('');
+  const dispatch = useDispatch();
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(!repoName) return
+    dispatch(actionCreators.searchRepositories(repoName));
   };
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input value={repo} onChange={(e) => setRepo(e.target.value)}/>
+        <input value={repoName} onChange={(e) => setRepoName(e.target.value)}/>
         <button>Search</button>
       </form>
       <h1>RepositoriesList</h1>
@@ -19,4 +24,4 @@ const RepositoriesList: React.FC = () => {
   );
 };
 
-export default RepositoriesList; 
+export default RepositoriesList;
