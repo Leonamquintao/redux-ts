@@ -12,7 +12,6 @@ const RepositoriesList: React.FC = () => {
     event.preventDefault();
     if(!repoName) return
     searchRepositories(repoName);
-
   };
 
   return (
@@ -21,7 +20,12 @@ const RepositoriesList: React.FC = () => {
         <input value={repoName} onChange={(e) => setRepoName(e.target.value)}/>
         <button>Search</button>
       </form>
-      <h1>RepositoriesList</h1>
+      {error && <h3>{error}</h3>}
+      {loading && <h3>Loading...</h3>}
+      {
+        !error && !loading &&
+        data.map((pack) => <div key={pack}>{pack}</div>)
+      }
     </div>
   );
 };
